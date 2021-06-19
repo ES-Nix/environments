@@ -10,6 +10,10 @@
     };
 
     defaultPackage = self.packages.${system}.minimal;
+    devShell = pkgsAllowUnfree.mkShell {
+      buildInputs = with pkgs; [
+        bashInteractive coreutils
+      ];
+    };
   });
-
 }
