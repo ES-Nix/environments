@@ -1,7 +1,7 @@
 { pkgs ?  import <nixpkgs> {} }:
 pkgs.stdenv.mkDerivation {
   name = "minimal";
-  buildInputs = with pkgs; [ bashInteractive coreutils hello ];
+  buildInputs = with pkgs; [ bashInteractive coreutils ];
 
   # https://nix.dev/anti-patterns/language#reproducability-referencing-top-level-directory-with
   src = builtins.path { path = ./.; name = "minimal"; };
