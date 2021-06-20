@@ -10,6 +10,11 @@ pkgs.stdenv.mkDerivation {
 
     install -t $out/bin ${pkgs.bashInteractive}/bin/bash
     install -t $out/bin ${pkgs.coreutils}/bin/coreutils
+    install -t $out/bin ${pkgs.coreutils}/bin/wc
+    install -t $out/bin ${pkgs.coreutils}/bin/ls
+    install -t $out/bin ${pkgs.coreutils}/bin/rm
+    install -t $out/bin ${pkgs.coreutils}/bin/echo
+    install -t $out/bin ${pkgs.coreutils}/bin/readlink
     install -t $out/bin ${pkgs.hello}/bin/hello
   '';
 
