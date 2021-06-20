@@ -21,20 +21,21 @@
       devShell = pkgs.mkShell {
         buildInputs = with pkgs; [
           self.packages.${system}.dev
+          fzf
         ];
 
         shellHook = ''
           # TODO: it needs to be well documented!
           export TMPDIR=/tmp
 
-          export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
+          export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh
 
           # Customize your oh-my-zsh options here
           export ZSH_THEME="agnoster"
-          plugins=(git)
+          export plugins=(git)
           source $ZSH/oh-my-zsh.sh
 
-          exec ${self.packages.${system}.dev}/bin/zsh
+          exec ${self.packages.${system}.dev}/bin/zsh --emulate zsh
         '';
       };
     }
