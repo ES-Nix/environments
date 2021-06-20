@@ -1,7 +1,7 @@
 { pkgs ?  import <nixpkgs> {} }:
 pkgs.stdenv.mkDerivation {
   name = "dev";
-  buildInputs = with pkgs; [ coreutils zsh ];
+  buildInputs = with pkgs; [ coreutils lesspipe zsh ];
 
   # https://nix.dev/anti-patterns/language#reproducability-referencing-top-level-directory-with
   src = builtins.path { path = ./.; name = "dev"; };
@@ -9,6 +9,7 @@ pkgs.stdenv.mkDerivation {
     mkdir --parent $out/bin
 
     install -t $out/bin ${pkgs.zsh}/bin/zsh
+    install -t $out/bin ${pkgs.lesspipe}/bin/lesspipe.sh
 
     install -t $out/bin ${pkgs.coreutils}/bin/coreutils
 
