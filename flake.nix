@@ -12,16 +12,15 @@
         };
     in
     {
-      packages.minimal = import ./default.nix {
+      packages.dev = import ./default.nix {
         pkgs = nixpkgs.legacyPackages.${system};
       };
 
-      defaultPackage = self.packages.${system}.minimal;
+      defaultPackage = self.packages.${system}.dev;
 
       devShell = pkgs.mkShell {
         buildInputs = with pkgs; [
-          self.defaultPackage.${system}.minimal
-          self.packages.${system}.minimal
+          self.packages.${system}.dev
         ];
 
         shellHook = ''
@@ -31,11 +30,13 @@
           export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
 
           # Customize your oh-my-zsh options here
-          ZSH_THEME="agnoster"
+          # ZSH_THEME="agnoster"
           plugins=(git)
           source $ZSH/oh-my-zsh.sh
 
-          ${self.packages.${system}.minimal}/bin/zsh
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+
+          ${self.packages.${system}.dev}/bin/zsh
         '';
       };
     }
