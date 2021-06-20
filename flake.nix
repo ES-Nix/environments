@@ -27,7 +27,7 @@
         shellHook = ''
           # TODO: it needs to be well documented!
           export TMPDIR=/tmp
-          ${self.packages.${system}.minimal}/bin/bash
+          ${self.packages.${system}.minimal}/bin/zsh
         '';
       };
     }
