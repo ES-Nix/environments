@@ -28,14 +28,9 @@
           # TODO: it needs to be well documented!
           export TMPDIR=/tmp
 
-          export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh
+          export ZSH=${pkgs.zsh}/bin/zsh
 
-          # Customize your oh-my-zsh options here
-          export ZSH_THEME="agnoster"
-          export plugins=(git)
-          source $ZSH/oh-my-zsh.sh
-
-          exec ${self.packages.${system}.dev}/bin/zsh --emulate zsh
+          exec ${self.packages.${system}.dev}/bin/zsh
         '';
       };
     }
