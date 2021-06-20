@@ -8,7 +8,7 @@ pkgs.stdenv.mkDerivation {
   installPhase = ''
     mkdir --parent $out/bin
 
-    install -t $out/bin ${pkgs.bashInteractive}/bin/zsh
+    install -t $out/bin ${pkgs.zsh}/bin/zsh
 
     install -t $out/bin ${pkgs.coreutils}/bin/coreutils
 
