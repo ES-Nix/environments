@@ -1,7 +1,7 @@
 { pkgs ?  import <nixpkgs> {} }:
 pkgs.stdenv.mkDerivation {
   name = "minimal";
-  buildInputs = with pkgs; [ zsh coreutils ];
+  buildInputs = with pkgs; [ coreutils oh-my-zsh zsh ];
 
   # https://nix.dev/anti-patterns/language#reproducability-referencing-top-level-directory-with
   src = builtins.path { path = ./.; name = "minimal"; };
@@ -9,6 +9,7 @@ pkgs.stdenv.mkDerivation {
     mkdir --parent $out/bin
 
     install -t $out/bin ${pkgs.zsh}/bin/zsh
+    install -t $out/bin ${pkgs.oh-my-zsh}/share/oh-my-zsh/oh-my-zsh.sh
 
     install -t $out/bin ${pkgs.coreutils}/bin/coreutils
 

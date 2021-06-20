@@ -27,6 +27,14 @@
         shellHook = ''
           # TODO: it needs to be well documented!
           export TMPDIR=/tmp
+
+          export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
+
+          # Customize your oh-my-zsh options here
+          ZSH_THEME="agnoster"
+          plugins=(git)
+          source $ZSH/oh-my-zsh.sh
+
           ${self.packages.${system}.minimal}/bin/zsh
         '';
       };
