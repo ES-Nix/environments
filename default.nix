@@ -1,12 +1,14 @@
 { pkgs ?  import <nixpkgs> {} }:
 pkgs.stdenv.mkDerivation {
-  name = "minimal";
-  buildInputs = with pkgs; [ coreutils oh-my-zsh zsh zsh-powerlevel10k ];
+  name = "dev";
+  buildInputs = with pkgs; [ bash coreutils oh-my-zsh zsh zsh-powerlevel10k ];
 
   # https://nix.dev/anti-patterns/language#reproducability-referencing-top-level-directory-with
-  src = builtins.path { path = ./.; name = "minimal"; };
+  src = builtins.path { path = ./.; name = "dev"; };
   installPhase = ''
     mkdir --parent $out/bin
+
+    install -t $out/bin ${pkgs.bash}/bin/bash
 
     install -t $out/bin ${pkgs.zsh}/bin/zsh
     install -t $out/bin ${pkgs.oh-my-zsh}/share/oh-my-zsh/oh-my-zsh.sh
