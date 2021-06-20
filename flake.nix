@@ -20,8 +20,13 @@
 
       devShell = pkgs.mkShell {
         buildInputs = with pkgs; [
-          bashInteractive coreutils
+          self.defaultPackage.${system}.minimal
+          self.packages.${system}.minimal
         ];
+
+        devShell = ''
+          ${self.packages.${system}.minimal}/bin/bash
+        '';
       };
     }
   );
