@@ -24,7 +24,9 @@
           self.packages.${system}.minimal
         ];
 
-        devShell = ''
+        shellHook = ''
+          # TODO: it needs to be well documented!
+          export TMPDIR=/tmp
           ${self.packages.${system}.minimal}/bin/bash
         '';
       };
