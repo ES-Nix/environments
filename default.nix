@@ -6,9 +6,10 @@ pkgs.stdenv.mkDerivation {
   # https://nix.dev/anti-patterns/language#reproducability-referencing-top-level-directory-with
   src = builtins.path { path = ./.; name = "minimal"; };
   installPhase = ''
-    mkdir --parent $out/bin;
-    install -t $out/bin ${pkgs.bashInteractive}/bin
-    install -t $out/bin ${pkgs.coreutils}/bin
+    mkdir --parent $out/bin
+
+    install -t $out/bin/bash ${pkgs.bashInteractive}/bin/bash
+    install -t $out/bin/coreutils ${pkgs.coreutils}/bin/coreutils
   '';
 
   phases = [ "buildPhase" "installPhase" "fixupPhase" ];
