@@ -10,4 +10,6 @@ pkgs.stdenv.mkDerivation {
     install -t $out/bin ${pkgs.bashInteractive}/bin/bash
     install -t $out/bin ${pkgs.coreutils}/bin/coreutils
   '';
+
+  phases = [ "buildPhase" "installPhase" "fixupPhase" ];
 }
