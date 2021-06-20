@@ -18,3 +18,5 @@ github:ES-Nix/environments/dev \
 --command \
 zsh
 ```
+
+source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme

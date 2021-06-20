@@ -30,11 +30,9 @@
           export ZSH=${pkgs.oh-my-zsh}/share/oh-my-zsh/
 
           # Customize your oh-my-zsh options here
-          # ZSH_THEME="agnoster"
+          export ZSH_THEME="agnoster"
           plugins=(git)
           source $ZSH/oh-my-zsh.sh
-
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
           ${self.packages.${system}.dev}/bin/zsh
         '';
