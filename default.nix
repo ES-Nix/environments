@@ -1,15 +1,12 @@
 { pkgs ?  import <nixpkgs> {} }:
 pkgs.stdenv.mkDerivation {
   name = "dev";
-  buildInputs = with pkgs; [ bash coreutils fzf oh-my-zsh zsh zsh-powerlevel10k ];
+  buildInputs = with pkgs; [ coreutils zsh ];
 
   # https://nix.dev/anti-patterns/language#reproducability-referencing-top-level-directory-with
   src = builtins.path { path = ./.; name = "dev"; };
   installPhase = ''
     mkdir --parent $out/bin
-
-    install -t $out/bin ${pkgs.bash}/bin/bash
-    install -t $out/bin ${pkgs.fzf}/bin/fzf
 
     install -t $out/bin ${pkgs.zsh}/bin/zsh
     install -t $out/bin ${pkgs.oh-my-zsh}/share/oh-my-zsh/oh-my-zsh.sh

@@ -21,7 +21,6 @@
       devShell = pkgs.mkShell {
         buildInputs = with pkgs; [
           self.packages.${system}.dev
-          fzf
         ];
 
         shellHook = ''
