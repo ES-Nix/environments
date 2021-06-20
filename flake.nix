@@ -34,7 +34,7 @@
           plugins=(git)
           source $ZSH/oh-my-zsh.sh
 
-          ${self.packages.${system}.dev}/bin/zsh
+          exec ${self.packages.${system}.dev}/bin/zsh
         '';
       };
     }
