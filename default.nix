@@ -8,8 +8,8 @@ pkgs.stdenv.mkDerivation {
   installPhase = ''
     mkdir --parent $out/bin
 
-    install -t $out/bin/bash ${pkgs.bashInteractive}/bin/bash
-    install -t $out/bin/coreutils ${pkgs.coreutils}/bin/coreutils
+    install -t $out/bin ${pkgs.bashInteractive}/bin/bash
+    install -t $out/bin ${pkgs.coreutils}/bin/coreutils
   '';
 
   phases = [ "buildPhase" "installPhase" "fixupPhase" ];
