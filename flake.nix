@@ -21,7 +21,7 @@
       devShell = pkgs.mkShell {
         buildInputs = with pkgs; [
           self.packages.${system}.dev
-          lesspipe
+          bashInteractive
         ];
 
         shellHook = ''
